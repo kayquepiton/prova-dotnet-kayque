@@ -53,6 +53,14 @@ class GerenciadorEscritorioAdvogacia{
             Console.WriteLine($"Nome: {cli.Nome}, Profissão: {cli.Profissao}");
         }
 
+        // Relatório 6: Advogados e Clientes aniversariantes do mês informado
+        int mesAniversario = 8; // Substitua pelo mês informado pelo usuário
+        var aniversariantesDoMes = advogados.Concat<IPessoa>(clientes)
+                                            .Where(p => p.DataNascimento.Month == mesAniversario);
+        Console.WriteLine($"\nAniversariantes do mês {mesAniversario}:");
+        foreach (var pessoa in aniversariantesDoMes){
+            Console.WriteLine($"Nome: {pessoa.Nome}, Data de Nascimento: {pessoa.DataNascimento:dd/MM/yyyy}");
+        }
         
     }
 }
