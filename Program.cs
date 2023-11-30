@@ -72,7 +72,7 @@ class GerenciadorEscritoriaAdvogacia
 
         // Relatório 5: Clientes cuja profissão contenha texto informado pelo usuário
         Console.Write("\nInforme um texto para buscar nas profissões dos clientes: ");
-        string textoBusca = Console.ReadLine();
+        string textoBusca = Console.ReadLine() ??"";
         var clientesPorProfissao = clientes.Where(c => c.Profissao.Contains(textoBusca, StringComparison.OrdinalIgnoreCase));
         Console.WriteLine($"\nClientes cuja profissão contém '{textoBusca}':");
         foreach (var cli in clientesPorProfissao)
@@ -116,7 +116,7 @@ class GerenciadorEscritoriaAdvogacia
     static Advogado CadastrarAdvogado(HashSet<Advogado> advogados)
     {
         Console.Write("Nome: ");
-        string nomeAdvogado = Console.ReadLine();
+        string nomeAdvogado = Console.ReadLine()??"";
 
         Console.Write("Data de Nascimento (dd/mm/aaaa): ");
         DateTime dataNascimentoAdvogado;
@@ -127,7 +127,7 @@ class GerenciadorEscritoriaAdvogacia
         }
 
         Console.Write("CPF (11 dígitos): ");
-        string cpfAdvogado = Console.ReadLine();
+        string cpfAdvogado = Console.ReadLine()??"";
 
         // Validar CPF único
         if (advogados.Any(a => a.CPF == cpfAdvogado))
@@ -137,7 +137,7 @@ class GerenciadorEscritoriaAdvogacia
         }
 
         Console.Write("CNA: ");
-        string cnaAdvogado = Console.ReadLine();
+        string cnaAdvogado = Console.ReadLine()??"";
 
         // Validar CNA único
         if (advogados.Any(a => a.CNA == cnaAdvogado))
@@ -161,7 +161,7 @@ class GerenciadorEscritoriaAdvogacia
     static Cliente CadastrarCliente(HashSet<Cliente> clientes)
     {
         Console.Write("Nome: ");
-        string nomeCliente = Console.ReadLine();
+        string nomeCliente = Console.ReadLine()??"";
 
         Console.Write("Data de Nascimento (dd/mm/aaaa): ");
         DateTime dataNascimentoCliente;
@@ -172,7 +172,7 @@ class GerenciadorEscritoriaAdvogacia
         }
 
         Console.Write("CPF (11 dígitos): ");
-        string cpfCliente = Console.ReadLine();
+        string cpfCliente = Console.ReadLine()??"";
 
         // Validar CPF único
         if (clientes.Any(c => c.CPF == cpfCliente))
@@ -190,7 +190,7 @@ class GerenciadorEscritoriaAdvogacia
         }
 
         Console.Write("Profissão: ");
-        string profissaoCliente = Console.ReadLine();
+        string profissaoCliente = Console.ReadLine()??"";
 
         try
         {
