@@ -44,3 +44,23 @@ class Advogado : Pessoa{
         CNA = cna;
     }
 }
+
+// Classe Cliente
+class Cliente : Pessoa{
+    public string CPF { get; }
+    public EstadoCivil EstadoCivil { get; }
+    public string Profissao { get; }
+
+    public Cliente(string nome, DateTime dataNascimento, string cpf, EstadoCivil estadoCivil, string profissao)
+        : base(nome, dataNascimento)
+    {
+        // Validar CPF com 11 dígitos
+        if (cpf.Length != 11 || !cpf.All(char.IsDigit)){
+            throw new ArgumentException("CPF inválido");
+        }
+
+        CPF = cpf;
+        EstadoCivil = estadoCivil;
+        Profissao = profissao;
+    }
+}
