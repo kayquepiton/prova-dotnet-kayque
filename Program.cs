@@ -2,19 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 
-class GerenciadorEscritorioAdvogacia{
-    static void Main(){
+class Program
+{
+    static void Main()
+    {
+        List<Advogado> advogados = new List<Advogado>();
+        List<Cliente> clientes = new List<Cliente>();
 
-        // Criando algumas instâncias de advogados e clientes para teste
-        List<Advogado> advogados = new List<Advogado>{
-            new Advogado("Adv1", new DateTime(1990, 1, 15), "12345678901", "CNA123"),
-            new Advogado("Adv2", new DateTime(1985, 5, 20), "98765432101", "CNA456")
-        };
+        // Entrada de dados para advogados
+        for (int i = 0; i < 2; i++){
+            Console.WriteLine("Digite os dados do Advogado:");
+            Console.Write("Nome: ");
+            string nomeAdvogado = Console.ReadLine();
 
-        List<Cliente> clientes = new List<Cliente>{
-            new Cliente("Cliente1", new DateTime(1980, 3, 10), "11122233344", EstadoCivil.Solteiro, "Engenheiro"),
-            new Cliente("Cliente2", new DateTime(1995, 8, 25), "55566677788", EstadoCivil.Casado, "Médico")
-        };
+            Console.Write("Data de Nascimento (yyyy/mm/dd): ");
+            DateTime dataNascimentoAdvogado = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("CPF (11 dígitos): ");
+            string cpfAdvogado = Console.ReadLine();
+
+            Console.Write("CNA: ");
+            string cnaAdvogado = Console.ReadLine();
+
+            try{
+                Advogado advogado = new Advogado(nomeAdvogado, dataNascimentoAdvogado, cpfAdvogado, cnaAdvogado);
+                advogados.Add(advogado);
+            }
+            catch (ArgumentException ex){
+                Console.WriteLine($"Erro ao cadastrar Advogado: {ex.Message}");
+                i--; // Repetir a iteração se houver um erro
+            }
+        }
+
+        // Entrada de dados para clientes
+        for (int i = 0; i < 2; i++){
+            Console.WriteLine("\nDigite os dados do Cliente:");
+            Console.Write("Nome: ");
+            string nomeCliente = Console.ReadLine();
+
+            Console.Write("Data de Nascimento (yyyy/mm/dd): ");
+            DateTime dataNascimentoCliente = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("CPF (11 dígitos): ");
+            string cpfCliente = Console.ReadLine();
+
+            Console.Write("Estado Civil (Solteiro ou Casado): ");
+            EstadoCivil estadoCivilCliente;
+            if (!Enum.TryParse(Console.ReadLine(), true, out estadoCivilCliente)){
+                Console.WriteLine("Estado civil inválido. Digite Solteiro ou Casado.");
+                i--; // Repetir a iteração se houver um erro
+                continue;
+            }
+
+            Console.Write("Profissão: ");
+            string profissaoCliente = Console.ReadLine();
+
+            try{
+                Cliente cliente = new Cliente(nomeCliente, dataNascimentoCliente, cpfCliente, estadoCivilCliente, profissaoCliente);
+                clientes.Add(cliente);
+            }
+            catch (ArgumentException ex){
+                Console.WriteLine($"Erro ao cadastrar Cliente: {ex.Message}");
+                i--; // Repetir a iteração se houver um erro
+            }
+        }
 
         // Relatório 1: Advogados com idade entre dois valores
         var advogadosPorIdade = advogados.Where(a => a.Idade >= 30 && a.Idade <= 40);
