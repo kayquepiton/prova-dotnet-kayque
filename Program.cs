@@ -8,8 +8,8 @@ class GerenciadorEscritoriaAdvogacia{
         List<Cliente> clientes = new List<Cliente>();
 
         // Entrada de dados para advogados
-        Console.WriteLine("Cadastro de Advogados:");
         do{
+            Console.WriteLine("\nCadastro de Advogados:");
             Advogado advogado = CadastrarAdvogado();
             advogados.Add(advogado);
 
@@ -17,9 +17,9 @@ class GerenciadorEscritoriaAdvogacia{
         } while (Console.ReadLine().ToUpper() == "S");
 
         // Entrada de dados para clientes
-        Console.WriteLine("\nCadastro de Clientes:");
         do
         {
+            Console.WriteLine("\nCadastro de Clientes:");
             Cliente cliente = CadastrarCliente();
             clientes.Add(cliente);
 
@@ -114,7 +114,7 @@ class GerenciadorEscritoriaAdvogacia{
         Console.Write("Nome: ");
         string nomeAdvogado = Console.ReadLine();
 
-        Console.Write("Data de Nascimento (dd/MM/yyyy): ");
+        Console.Write("Data de Nascimento (dd/mm/aaaa): ");
         DateTime dataNascimentoAdvogado;
         if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataNascimentoAdvogado))
         {
@@ -144,7 +144,7 @@ class GerenciadorEscritoriaAdvogacia{
         Console.Write("Nome: ");
         string nomeCliente = Console.ReadLine();
 
-        Console.Write("Data de Nascimento (dd/MM/yyyy): ");
+        Console.Write("Data de Nascimento (dd/mm/aaaa): ");
         DateTime dataNascimentoCliente;
         if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataNascimentoCliente))
         {
