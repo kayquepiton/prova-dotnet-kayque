@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
+class GerenciadorEscritorioAdvogacia{
+    static void Main(){
+        
+    }
+}
+
 // Enum para o estado civil
 enum EstadoCivil{
     Solteiro,
