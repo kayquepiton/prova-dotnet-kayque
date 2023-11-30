@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 
-class GerenciadorEscritoriaAdvogacia{
-    static void Main(){
-        List<Advogado> advogados = new List<Advogado>();
-        List<Cliente> clientes = new List<Cliente>();
+class GerenciadorEscritoriaAdvogacia
+{
+    static void Main()
+    {
+        HashSet<Advogado> advogados = new HashSet<Advogado>();
+        HashSet<Cliente> clientes = new HashSet<Cliente>();
 
         // Entrada de dados para advogados
-        do{
+        do
+        {
             Console.WriteLine("\nCadastro de Advogados:");
-            Advogado advogado = CadastrarAdvogado();
+            Advogado advogado = CadastrarAdvogado(advogados);
             advogados.Add(advogado);
 
             Console.Write("Deseja cadastrar outro advogado? (S/N): ");
@@ -20,7 +23,7 @@ class GerenciadorEscritoriaAdvogacia{
         do
         {
             Console.WriteLine("\nCadastro de Clientes:");
-            Cliente cliente = CadastrarCliente();
+            Cliente cliente = CadastrarCliente(clientes);
             clientes.Add(cliente);
 
             Console.Write("Deseja cadastrar outro cliente? (S/N): ");
@@ -109,7 +112,8 @@ class GerenciadorEscritoriaAdvogacia{
         }
     }
 
-    static Advogado CadastrarAdvogado()
+    // Função para cadastrar Advogado com validação de CPF e CNA únicos
+    static Advogado CadastrarAdvogado(HashSet<Advogado> advogados)
     {
         Console.Write("Nome: ");
         string nomeAdvogado = Console.ReadLine();
@@ -119,14 +123,28 @@ class GerenciadorEscritoriaAdvogacia{
         if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataNascimentoAdvogado))
         {
             Console.WriteLine("Data de nascimento inválida. Tente novamente.");
-            return CadastrarAdvogado();
+            return CadastrarAdvogado(advogados);
         }
 
         Console.Write("CPF (11 dígitos): ");
         string cpfAdvogado = Console.ReadLine();
 
+        // Validar CPF único
+        if (advogados.Any(a => a.CPF == cpfAdvogado))
+        {
+            Console.WriteLine("CPF já cadastrado. Tente novamente.");
+            return CadastrarAdvogado(advogados);
+        }
+
         Console.Write("CNA: ");
         string cnaAdvogado = Console.ReadLine();
+
+        // Validar CNA único
+        if (advogados.Any(a => a.CNA == cnaAdvogado))
+        {
+            Console.WriteLine("CNA já cadastrado. Tente novamente.");
+            return CadastrarAdvogado(advogados);
+        }
 
         try
         {
@@ -135,11 +153,12 @@ class GerenciadorEscritoriaAdvogacia{
         catch (ArgumentException ex)
         {
             Console.WriteLine($"Erro ao cadastrar Advogado: {ex.Message}");
-            return CadastrarAdvogado(); // Repetir a entrada se houver um erro
+            return CadastrarAdvogado(advogados); // Repetir a entrada se houver um erro
         }
     }
 
-    static Cliente CadastrarCliente()
+    // Função para cadastrar Cliente com validação de CPF único
+    static Cliente CadastrarCliente(HashSet<Cliente> clientes)
     {
         Console.Write("Nome: ");
         string nomeCliente = Console.ReadLine();
@@ -149,18 +168,25 @@ class GerenciadorEscritoriaAdvogacia{
         if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dataNascimentoCliente))
         {
             Console.WriteLine("Data de nascimento inválida. Tente novamente.");
-            return CadastrarCliente();
+            return CadastrarCliente(clientes);
         }
 
         Console.Write("CPF (11 dígitos): ");
         string cpfCliente = Console.ReadLine();
+
+        // Validar CPF único
+        if (clientes.Any(c => c.CPF == cpfCliente))
+        {
+            Console.WriteLine("CPF já cadastrado. Tente novamente.");
+            return CadastrarCliente(clientes);
+        }
 
         Console.Write("Estado Civil (Solteiro ou Casado): ");
         EstadoCivil estadoCivilCliente;
         if (!Enum.TryParse(Console.ReadLine(), true, out estadoCivilCliente))
         {
             Console.WriteLine("Estado civil inválido. Digite Solteiro ou Casado.");
-            return CadastrarCliente(); // Repetir a entrada se houver um erro
+            return CadastrarCliente(clientes); // Repetir a entrada se houver um erro
         }
 
         Console.Write("Profissão: ");
@@ -173,7 +199,7 @@ class GerenciadorEscritoriaAdvogacia{
         catch (ArgumentException ex)
         {
             Console.WriteLine($"Erro ao cadastrar Cliente: {ex.Message}");
-            return CadastrarCliente(); // Repetir a entrada se houver um erro
+            return CadastrarCliente(clientes); // Repetir a entrada se houver um erro
         }
     }
 }
