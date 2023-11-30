@@ -1,0 +1,15 @@
+/home/kayque-almeida-piton/prova-dotnet-kayque/bin/Debug/net7.0/prova-dotnet-kayque
+/home/kayque-almeida-piton/prova-dotnet-kayque/bin/Debug/net7.0/prova-dotnet-kayque.deps.json
+/home/kayque-almeida-piton/prova-dotnet-kayque/bin/Debug/net7.0/prova-dotnet-kayque.runtimeconfig.json
+/home/kayque-almeida-piton/prova-dotnet-kayque/bin/Debug/net7.0/prova-dotnet-kayque.dll
+/home/kayque-almeida-piton/prova-dotnet-kayque/bin/Debug/net7.0/prova-dotnet-kayque.pdb
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/prova-dotnet-kayque.csproj.AssemblyReference.cache
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/prova-dotnet-kayque.GeneratedMSBuildEditorConfig.editorconfig
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/prova-dotnet-kayque.AssemblyInfoInputs.cache
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/prova-dotnet-kayque.AssemblyInfo.cs
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/prova-dotnet-kayque.csproj.CoreCompileInputs.cache
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/prova-dotnet-kayque.dll
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/refint/prova-dotnet-kayque.dll
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/prova-dotnet-kayque.pdb
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/prova-dotnet-kayque.genruntimeconfig.cache
+/home/kayque-almeida-piton/prova-dotnet-kayque/obj/Debug/net7.0/ref/prova-dotnet-kayque.dll
