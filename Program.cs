@@ -4,6 +4,18 @@ using System.Linq;
 
 class GerenciadorEscritorioAdvogacia{
     static void Main(){
+
+        // Criando algumas instâncias de advogados e clientes para teste
+        List<Advogado> advogados = new List<Advogado>{
+            new Advogado("Adv1", new DateTime(1990, 1, 15), "12345678901", "CNA123"),
+            new Advogado("Adv2", new DateTime(1985, 5, 20), "98765432101", "CNA456")
+        };
+
+        List<Cliente> clientes = new List<Cliente>{
+            new Cliente("Cliente1", new DateTime(1980, 3, 10), "11122233344", EstadoCivil.Solteiro, "Engenheiro"),
+            new Cliente("Cliente2", new DateTime(1995, 8, 25), "55566677788", EstadoCivil.Casado, "Médico")
+        };
+
         
     }
 }
